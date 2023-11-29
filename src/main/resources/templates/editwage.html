@@ -1,0 +1,15 @@
+<form th:action="@{/edit/{id}(id=${wage.id})}" method="post" th:object="${wage}">
+    <div class="form-group">
+        <label for="date">Day:</label>
+        <input type="text" class="form-control" id="day" th:field="*{day}">
+        <label for="date">Month:</label>
+        <input type="text" class="form-control" id="month" th:field="*{month}">
+        <label for="date">Year:</label>
+        <input type="text" class="form-control" id="year" th:field="*{year}">
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" class="form-control" id="price" th:field="*{price}">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wage List</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Wage List</h1>
+
+<table>
+		<tr>
+			<th>Date</th>
+			<th>Wage</th>
+		</tr>
+		<tr th:each="wage : ${wages}">
+			<td th:text="${wage.day+'.'+wage.month+'.'+wage.year}"></td>
+			<td th:text="${wage.price}"></td>
+			<td><a th:href="@{/delete/{id}(id=${wage.id})}">Delete</a></td>
+			<td>
+				<a th:href="@{/edit/{id}(id=${wage.id})}" class="btn btn-danger">Edit</a>
+			</td>
+
+		</tr>
+	</table>
+
+    <a th:href="@{/}" class="btn btn-primary">Back</a>
+</body>
+
+</html>

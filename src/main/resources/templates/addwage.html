@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Wage</title>
+</head>
+
+<body>
+    <h1>Lisää palkka</h1>
+    <form th:object="${wage}" method="post" th:action="@{/save}">
+        <div class="form-group">
+            <label for="day">Day:</label>
+            <input type="text" class="form-control" id="day" th:field="*{day}">
+            <span th:if="${#fields.hasErrors('day')}" th:errors="*{day}">error</span>
+            <label for="month">Month:</label>
+            <input type="text" class="form-control" id="month" th:field="*{month}">
+            <span th:if="${#fields.hasErrors('month')}" th:errors="*{month}">error</span>
+
+            <label for="year">Year:</label>
+            <input type="text" class="form-control" id="year" th:field="*{year}">
+            <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">error</span>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required th:field="*{price}"><br>
+        </div>
+
+        <input type="submit" value="Save">
+    </form>
+</body>
+
+</html>

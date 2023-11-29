@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Wage app</title>
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<h1>Your Wages</h1>
+
+	<form th:action="@{/}" method="get"> <!-- Make sure to replace "/" with your actual endpoint -->
+		<select class="form-control" name="selectedMonth">
+			<option th:each="monthNumber : ${#numbers.sequence(1, 12)}" th:value="${monthNumber}"
+				th:text="${monthNumber}"></option>
+		</select>
+		<button type="submit">Submit</button>
+	</form>
+	<p th:if="${selectedMonthSupport != null}"
+		th:text="'The income gap for '+${selectedMonthNumber}+'month(s): ' + ${selectedMonthSupport}"></p>
+
+
+	
+	<h2>Total Wages</h2>
+	<table>
+		<tr>
+			<th>Year</th>
+			<th>Total</th>
+			<th>Left</th>
+			
+		</tr>
+		<tr th:each="entry : ${totalWagesByYear.entrySet()}">
+			<td th:text="${entry.key}"></td>
+			<td th:text="${entry.value}"></td>
+			<td th:text="${selectedMonthSupport-entry.value}"></td>
+
+		</tr>
+	</table>
+	<a th:href="@{/addwage}" class="btn btn-success">Add Wage</a>
+	<a th:href="@{/wagelist}" class="btn btn-info">See all wages</a>
+	<form th:action="@{/logout}" method="post">
+
+			<input type="submit" value="Log out" class="btn btn-sm btn-danger"/>
+		</form>
+</body>
+
+</html>
