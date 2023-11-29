@@ -1,12 +1,8 @@
 # Mvn Build
-FROM maven:latest AS build
-RUN mvn --version
+FROM maven:3.8.6-eclipse-temurin-17-focal AS build
 COPY src /home/app/src
 COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package > /home/app/build.log 2>&1
-
-# Check Maven build output
-RUN cat /home/app/build.log
+RUN mvn -f /home/app/pom.xml clean package
 
 # Jar Package
 FROM eclipse-temurin:17-jre-focal
