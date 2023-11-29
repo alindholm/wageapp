@@ -15,4 +15,4 @@ COPY --from=build /home/app/target/wageapp-0.0.1-
 SNAPSHOT.jar /usr/local/lib/wageapp.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar",
-"/usr/local/lib/dogbackend.jar"]
+"/usr/local/lib/wageapp.jar"]
